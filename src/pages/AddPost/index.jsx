@@ -182,7 +182,7 @@ export const AddPost = () => {
           </Button>
           <div className={styles.wrap}>
             {imageUrlAll.map((e) => (
-              <img className={styles.image} src={`${process.env.REACT_APP_API_URL}${e}`} alt="" />
+              <img className={styles.image} src={`http://localhost:4444${e}`} alt="" />
             ))}
           </div>
         </>

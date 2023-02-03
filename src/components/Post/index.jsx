@@ -15,6 +15,9 @@ import { fetchRemoveSchoolPost, fetchSchoolPosts } from '../../redux/slices/scho
 import { fetchRemovePost4 } from '../../redux/slices/posts4';
 import { fetchRemovePost3 } from '../../redux/slices/posts3';
 import { fetchRemovePost2 } from '../../redux/slices/posts2';
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
+
 import { fetchRemovePost1 } from '../../redux/slices/posts1';
 
 export const Post = ({
@@ -56,118 +59,100 @@ export const Post = ({
       }
     }
   };
+
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 3000 },
+      items: 5,
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 3,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+    },
+  };
+
   console.log('----------------------imageUrlAll--------------------');
   console.log(imageUrlAll);
 
+  const images = [
+    {
+      label: 'San Francisco – Oakland Bay Bridge, United States',
+      imgPath:
+        'https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60',
+    },
+  ];
+
   return (
-    <Link className={styles.link} to={`/posts/${id}`}>
-      <div className={clsx(styles.root, { [styles.rootFull]: isFullPost })}>
-        {isEditable && (
-          <div className={styles.editButtons}>
-            <Link to={`/posts/${id}/edit`}>
-              {/* <Link to={`${categoryId === 0 ? `/posts/${id}` : `/schoolposts/${id}`}`}> */}
-              <IconButton color="primary">
-                <EditIcon />
-              </IconButton>
-            </Link>
-            <IconButton onClick={onClickRemove} color="secondary">
-              <DeleteIcon />
+    // <Link className={styles.link} to={`/posts/${id}`}>
+    <div className={clsx(styles.root, { [styles.rootFull]: isFullPost })}>
+      {isEditable && (
+        <div className={styles.editButtons}>
+          <Link to={`/posts/${id}/edit`}>
+            {/* <Link to={`${categoryId === 0 ? `/posts/${id}` : `/schoolposts/${id}`}`}> */}
+            <IconButton color="primary">
+              <EditIcon />
             </IconButton>
-          </div>
-        )}
-        {imageUrlAll && (
-          <>
+          </Link>
+          <IconButton onClick={onClickRemove} color="secondary">
+            <DeleteIcon />
+          </IconButton>
+        </div>
+      )}
+      <div className={styles.slider}>
+        <Carousel responsive={responsive}>
+          {imageUrlAll.map((e, index) => (
             <div className={clsx(styles.wrap, { [styles.wrapFull]: isFullPost })}>
-              {imageUrlAll[0] && (
-                <img
-                  className={clsx(styles.image, { [styles.imageFull]: isFullPost })}
-                  src={`${process.env.REACT_APP_API_URL}${imageUrlAll[0]}`}
-                  alt={title}
-                />
-              )}
-              {imageUrlAll[1] && (
-                <img
-                  className={clsx(styles.image, { [styles.imageFull]: isFullPost })}
-                  src={`${process.env.REACT_APP_API_URL}${imageUrlAll[1]}`}
-                  alt={title}
-                />
-              )}
-              {imageUrlAll[2] && (
-                <img
-                  className={clsx(styles.image, { [styles.imageFull]: isFullPost })}
-                  src={`${process.env.REACT_APP_API_URL}${imageUrlAll[2]}`}
-                  alt={title}
-                />
-              )}
-              {imageUrlAll[3] && (
-                <img
-                  className={clsx(styles.image, { [styles.imageFull]: isFullPost })}
-                  src={`${process.env.REACT_APP_API_URL}${imageUrlAll[3]}`}
-                  alt={title}
-                />
-              )}
-
-              {imageUrlAll[4] && (
-                <img
-                  className={clsx(styles.image, { [styles.imageFull]: isFullPost })}
-                  src={`${process.env.REACT_APP_API_URL}${imageUrlAll[4]}`}
-                  alt={title}
-                />
-              )}
-
-              {imageUrlAll[5] && (
-                <img
-                  className={clsx(styles.image, { [styles.imageFull]: isFullPost })}
-                  src={`${process.env.REACT_APP_API_URL}${imageUrlAll[5]}`}
-                  alt={title}
-                />
-              )}
-              {imageUrlAll[6] && (
-                <img
-                  className={clsx(styles.image, { [styles.imageFull]: isFullPost })}
-                  src={`${process.env.REACT_APP_API_URL}${imageUrlAll[6]}`}
-                  alt={title}
-                />
-              )}
-              {imageUrlAll[7] && (
-                <img
-                  className={clsx(styles.image, { [styles.imageFull]: isFullPost })}
-                  src={`${process.env.REACT_APP_API_URL}${imageUrlAll[7]}`}
-                  alt={title}
-                />
-              )}
-              {imageUrlAll[8] && (
-                <img
-                  className={clsx(styles.image, { [styles.imageFull]: isFullPost })}
-                  src={`${process.env.REACT_APP_API_URL}${imageUrlAll[8]}`}
-                  alt={title}
-                />
-              )}
+              <img
+                className={clsx(styles.image, { [styles.imageFull]: isFullPost })}
+                src={`http://localhost:4444${imageUrlAll[index]}`}
+                alt={title}
+              />
             </div>
-          </>
-        )}
+          ))}
+        </Carousel>
+      </div>
 
-        <div className={styles.wrapper}>
-          <UserInfo {...user} additionalText={createdAt} />
-          <div className={styles.indention}>
-            <h2 className={clsx(styles.title, { [styles.titleFull]: isFullPost })}>
-              {isFullPost ? (
-                title
-              ) : (
-                // <Link to={`${categoryId === 0 ? `/posts/${id}` : `/schoolposts/${id}`}`}>
-                <Link to={`/posts/${id}`}>{title}</Link>
-              )}
-            </h2>
-            {children && <div className={styles.content}>{children}</div>}
-            <ul className={styles.postDetails}>
-              <li key="uniqueId1">
-                <EyeIcon />
-                <span>{viewsCount}</span>
-              </li>
-            </ul>
+      {/* {imageUrlAll && (
+          <div className={clsx(styles.wrap, { [styles.wrapFull]: isFullPost })}>
+            {imageUrlAll.map((e, index) => (
+              <img
+                className={clsx(styles.image, { [styles.imageFull]: isFullPost })}
+                src={`http://localhost:4444${imageUrlAll[index]}`}
+                alt={title}
+              />
+            ))}
           </div>
+        )} */}
+      <div className={styles.wrapper}>
+        <UserInfo {...user} additionalText={createdAt} />
+        <div className={styles.indention}>
+          <h2 className={clsx(styles.title, { [styles.titleFull]: isFullPost })}>
+            {isFullPost ? (
+              title
+            ) : (
+              // <Link to={`${categoryId === 0 ? `/posts/${id}` : `/schoolposts/${id}`}`}>
+              <Link to={`/posts/${id}`}>{title}</Link>
+            )}
+          </h2>
+          {children && <div className={styles.content}>{children}</div>}
+          <ul className={styles.postDetails}>
+            <li key="uniqueId1">
+              <EyeIcon />
+              <span>{viewsCount}</span>
+            </li>
+          </ul>
         </div>
       </div>
-    </Link>
+    </div>
+    // </Link>
   );
 };
