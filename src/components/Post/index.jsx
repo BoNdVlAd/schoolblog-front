@@ -113,7 +113,7 @@ export const Post = ({
             <div className={clsx(styles.wrap, { [styles.wrapFull]: isFullPost })}>
               <img
                 className={clsx(styles.image, { [styles.imageFull]: isFullPost })}
-                src={`http://localhost:4444${imageUrlAll[index]}`}
+                src={`${process.env.REACT_APP_API_URL}${imageUrlAll[index]}`}
                 alt={title}
               />
             </div>
