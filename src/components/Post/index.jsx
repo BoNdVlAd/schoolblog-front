@@ -81,28 +81,28 @@ export const Post = ({
               {imageUrlAll[0] && (
                 <img
                   className={clsx(styles.image, { [styles.imageFull]: isFullPost })}
-                  src={`http://localhost:4444${imageUrlAll[0]}`}
+                  src={`${process.env.REACT_APP_API_URL}${imageUrlAll[0]}`}
                   alt={title}
                 />
               )}
               {imageUrlAll[1] && (
                 <img
                   className={clsx(styles.image, { [styles.imageFull]: isFullPost })}
-                  src={`http://localhost:4444${imageUrlAll[1]}`}
+                  src={`${process.env.REACT_APP_API_URL}${imageUrlAll[1]}`}
                   alt={title}
                 />
               )}
               {imageUrlAll[2] && (
                 <img
                   className={clsx(styles.image, { [styles.imageFull]: isFullPost })}
-                  src={`http://localhost:4444${imageUrlAll[2]}`}
+                  src={`${process.env.REACT_APP_API_URL}${imageUrlAll[2]}`}
                   alt={title}
                 />
               )}
               {imageUrlAll[3] && (
                 <img
                   className={clsx(styles.image, { [styles.imageFull]: isFullPost })}
-                  src={`http://localhost:4444${imageUrlAll[3]}`}
+                  src={`${process.env.REACT_APP_API_URL}${imageUrlAll[3]}`}
                   alt={title}
                 />
               )}
@@ -110,7 +110,7 @@ export const Post = ({
               {imageUrlAll[4] && (
                 <img
                   className={clsx(styles.image, { [styles.imageFull]: isFullPost })}
-                  src={`http://localhost:4444${imageUrlAll[4]}`}
+                  src={`${process.env.REACT_APP_API_URL}${imageUrlAll[4]}`}
                   alt={title}
                 />
               )}
@@ -118,28 +118,28 @@ export const Post = ({
               {imageUrlAll[5] && (
                 <img
                   className={clsx(styles.image, { [styles.imageFull]: isFullPost })}
-                  src={`http://localhost:4444${imageUrlAll[5]}`}
+                  src={`${process.env.REACT_APP_API_URL}${imageUrlAll[5]}`}
                   alt={title}
                 />
               )}
               {imageUrlAll[6] && (
                 <img
                   className={clsx(styles.image, { [styles.imageFull]: isFullPost })}
-                  src={`http://localhost:4444${imageUrlAll[6]}`}
+                  src={`${process.env.REACT_APP_API_URL}${imageUrlAll[6]}`}
                   alt={title}
                 />
               )}
               {imageUrlAll[7] && (
                 <img
                   className={clsx(styles.image, { [styles.imageFull]: isFullPost })}
-                  src={`http://localhost:4444${imageUrlAll[7]}`}
+                  src={`${process.env.REACT_APP_API_URL}${imageUrlAll[7]}`}
                   alt={title}
                 />
               )}
               {imageUrlAll[8] && (
                 <img
                   className={clsx(styles.image, { [styles.imageFull]: isFullPost })}
-                  src={`http://localhost:4444${imageUrlAll[8]}`}
+                  src={`${process.env.REACT_APP_API_URL}${imageUrlAll[8]}`}
                   alt={title}
                 />
               )}

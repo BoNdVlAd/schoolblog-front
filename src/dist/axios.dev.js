@@ -1,18 +1,16 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, '__esModule', {
-  value: true,
+Object.defineProperty(exports, "__esModule", {
+  value: true
 });
-exports['default'] = void 0;
+exports["default"] = void 0;
 
-var _axios = _interopRequireDefault(require('axios'));
+var _axios = _interopRequireDefault(require("axios"));
 
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-var instance = _axios['default'].create({
-  baseURL: 'http://localhost:4444',
+var instance = _axios["default"].create({
+  baseURL: process.env.REACT_APP_API_URL
 });
 
 instance.interceptors.request.use(function (config) {
@@ -20,4 +18,4 @@ instance.interceptors.request.use(function (config) {
   return config;
 });
 var _default = instance;
-exports['default'] = _default;
+exports["default"] = _default;
