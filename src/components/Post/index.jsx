@@ -107,7 +107,7 @@ export const Post = ({
           </IconButton>
         </div>
       )}
-      <div className={styles.slider}>
+      <div className={clsx(styles.slider, { [styles.wrapFull]: isFullPost })}>
         <Carousel responsive={responsive}>
           {imageUrlAll.map((e, index) => (
             <div className={clsx(styles.wrap, { [styles.wrapFull]: isFullPost })}>
